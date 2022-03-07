@@ -2,16 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'components/atoms/Button/Button';
 import { Wrapper } from './UsersListItem.styles';
-import Average from 'components/atoms/Avarage/Average';
+import Average from 'components/atoms/Average/Average';
 import Info from 'components/atoms/Info/Info';
 
-const showMessage = (index) => alert(`Student number #${index + 1}`);
-
-const UsersListItem = ({ index, userData }) => (
+const UsersListItem = ({ deleteUser, userData }) => (
   <Wrapper>
     <Average userData={userData} />
     <Info userData={userData} />
-    <Button onClick={() => showMessage(index)} />
+    <Button onClick={() => deleteUser(userData.name)} />
   </Wrapper>
 );
 
