@@ -13,5 +13,7 @@
 5. Using Events in Components
 6. Components life cycle
   - Class components, Function components, State, Mounting/Updating/Unmounting, useState, useEffect
+7. Forms and routing
+  - Controled Input, React Router, Navigation
 
 ... in Progress
