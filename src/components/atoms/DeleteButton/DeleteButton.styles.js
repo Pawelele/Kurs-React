@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledButton = styled.button`
+export const StyledDeleteButton = styled.button`
   width: 25px;
   height: 25px;
   background-color: ${({ theme }) => theme.colors.gray};
@@ -11,6 +11,7 @@ export const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
   margin-left: 14px;
+  cursor: pointer;
 
   svg {
     width: 100%;
