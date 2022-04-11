@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const StyledLogo = styled.div`
   display: flex;
@@ -30,11 +30,24 @@ export const StyledMenu = styled.nav`
   border-right: 1px solid ${({ theme }) => theme.colors.darkPurple};
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(NavLink)`
+  position: relative;
   font-weight: bold;
   font-size: 15px;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.darkGrey};
   text-align: right;
   margin: 15px 15px 15px auto;
+
+  &.active {
+    &::after {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 3px;
+      top: 50%;
+      right: -16px;
+      background-color: ${({ theme }) => theme.colors.darkPurple};
+    }
+  }
 `;

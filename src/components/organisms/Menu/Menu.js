@@ -6,7 +6,7 @@ const Menu = () => {
     <StyledMenu>
       <StyledLogo>Study Buddy</StyledLogo>
 
-      <StyledLink to="/">Dashboard</StyledLink>
+      <StyledLink exact to="/">Dashboard</StyledLink>
       <StyledLink to="/add-user">Add user</StyledLink>
     </StyledMenu>
   );

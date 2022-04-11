@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import FormField from 'components/molecules/FormField/FormField';
 import { Button } from 'components/atoms/Button/Button';
 import { Title } from 'components/atoms/Title/Title';
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
+import { UsersContext } from 'providers/UsersProvider';
 
-const Form = ({ handleAddUser, formValues, handleInputChange }) => {
+const initialFormState = {
+  name: '',
+  attendance: '',
+  average: '',
+};
+
+const Form = () => {
+  const [formValues, setFormValues] = useState(initialFormState);
+  const context = useContext(UsersContext);
+
+  const handleInputChange = (e) => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmitUser = (e) => {
+    e.preventDefault();
+    context.handleAddUser(formValues);
+    setFormValues(initialFormState);
+  };
+
   return (
-    <ViewWrapper as="form" onSubmit={handleAddUser}>
+    <ViewWrapper as="form" onSubmit={handleSubmitUser}>
       <Title>Add new student</Title>
       <FormField
         label="Name"
