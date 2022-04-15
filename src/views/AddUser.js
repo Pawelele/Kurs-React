@@ -11,7 +11,7 @@ const initialFormState = {
   average: '',
 };
 
-const Form = () => {
+const AddUser = () => {
   const [formValues, setFormValues] = useState(initialFormState);
   const context = useContext(UsersContext);
 
@@ -57,4 +57,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default AddUser;
