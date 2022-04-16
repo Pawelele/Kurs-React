@@ -1,7 +1,7 @@
-import React from "react";
-import AddUser from "./AddUser";
-import Dashboard from "./Dashboard";
-import { renderWithProviders } from "helpers/renderWithProviders";
+import React from 'react';
+import AddUser from './AddUser';
+import Dashboard from './Dashboard';
+import { renderWithProviders } from 'helpers/renderWithProviders';
 import { fireEvent, screen } from '@testing-library/react';
 
 describe('Form', () => {

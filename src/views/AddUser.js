@@ -1,37 +1,50 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import FormField from 'components/molecules/FormField/FormField';
 import { Button } from 'components/atoms/Button/Button';
 import { Title } from 'components/atoms/Title/Title';
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 import { UsersContext } from 'providers/UsersProvider';
+import { useForm } from 'hooks/useForm';
 
 const initialFormState = {
   name: '',
   attendance: '',
   average: '',
+  consent: false,
+  error: '',
 };
 
 const AddUser = () => {
-  const [formValues, setFormValues] = useState(initialFormState);
   const context = useContext(UsersContext);
+  const {
+    formValues,
+    handleInputChange,
+    handleClearForm,
+    handleThrowError,
+    handleToggleConsent,
+  } = useForm(initialFormState);
 
-  const handleInputChange = (e) => {
-    setFormValues({
-      ...formValues,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const ref = useRef(null);
+
+  useEffect(() => {
+    ref.current.focus();
+  }, []);
 
   const handleSubmitUser = (e) => {
     e.preventDefault();
-    context.handleAddUser(formValues);
-    setFormValues(initialFormState);
+    if (formValues.consent) {
+      context.handleAddUser(formValues);
+      handleClearForm(initialFormState);
+    } else {
+      handleThrowError('Check consent');
+    }
   };
 
   return (
     <ViewWrapper as="form" onSubmit={handleSubmitUser}>
       <Title>Add new student</Title>
       <FormField
+        ref={ref}
         label="Name"
         id="name"
         name="name"
@@ -52,7 +65,16 @@ const AddUser = () => {
         value={formValues.average}
         onChange={handleInputChange}
       />
+      <FormField
+        label="Consent"
+        id="consent"
+        name="consent"
+        value={formValues.average}
+        type="checkbox"
+        onChange={handleToggleConsent}
+      />
       <Button type="submit">Add</Button>
+      {formValues.error ? <p>{formValues.error}</p> : null}
     </ViewWrapper>
   );
 };
