@@ -17,5 +17,8 @@
   - Controled Input, React Router, Navigation
 8. React Contex
   - Consumer, useContext hook, Provider Project Model
+9. Basics of testing in Jest and React testing library
+10. Hooks - useReducer, useMemo, useCallback, useRef and Custom hooks
+
 
 ... in Progress
